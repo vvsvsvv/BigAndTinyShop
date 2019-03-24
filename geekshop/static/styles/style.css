@@ -1,0 +1,195 @@
+html, body
+{
+    height: 100%;
+}
+
+body
+{
+    background-color: #f8f8f8;
+}
+
+.container
+{
+    max-width: 1366px;
+    min-height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.top
+{
+    flex-grow: 1;
+}
+
+.header
+{
+    height: 200px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid lightgrey;
+}
+
+.logo
+{
+    display: block;
+    margin-top: 30px;
+    margin-left: 50px;
+}
+
+.menu
+{
+    margin-top: 50px;
+    margin-right: 50px;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.menu-link
+{
+    display: block;
+    margin: 30px 20px;
+    font-family: "Arial", sans-serif;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.menu-link:hover
+{
+    color: #3CB371;
+}
+
+.description-header
+{
+    background-color: #eaeaea;
+    color: black;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.brief-description
+{
+    color: #707070;
+    font-size: 14px;
+    font-style: italic;
+    line-height: 16px;
+}
+
+.full-description
+{
+    color: #484343;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+}
+
+.capitalized:first-letter
+{
+    font-size: 24px;
+    color: #008B8B;
+}
+
+.product-characteristics
+{
+    color: #008080;
+    font-size: 14px;
+    list-style-image: url(/styles/img/icon.png);
+}
+
+.product-image
+{
+    outline: 2px solid green;
+    margin: 30px;
+}
+
+.product-image:hover
+{
+    outline: none;
+}
+
+.feedback
+{
+    width: 400px;
+}
+
+.feedback input, .feedback textarea
+{
+    width: 100%;
+    height: 30px;
+    color: #2F4F4F;
+    font-size: 16px;
+    margin-bottom: 16px;
+}
+
+input[type="email"]:focus
+{
+    background-color: #98FB98;
+    color: #4682B4;
+}
+
+input[type="text"]
+{
+    text-transform: capitalize;
+}
+
+.parameters-table
+{
+    border: 4px solid black;
+    border-collapse: collapse;
+}
+
+.parameters-table thead tr
+{
+    height: 40px;
+}
+
+.parameters-table td, .parameters-table th
+{
+    border: 2px solid black;
+}
+
+.footer
+{
+    height: 50px;
+    color: white;
+    background-color: #696969;
+    text-align: right;
+    padding-top: 30px;
+    padding-right: 50px;
+    margin-top: 30px;
+}
+
+.content-product-top
+{
+    display: flex;
+}
+
+.button-buy
+{
+    display: block;
+    width: 60px;
+    padding:15px 30px;
+    background-color: #008080;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+
+.button-buy:hover
+{
+    background-color: #3CB371;
+}
+
+.catalog-image, .catalog-link
+{
+    display: block;
+}
+
+.catalog-items
+{
+    display: flex;
+    justify-content: space-around;
+}
