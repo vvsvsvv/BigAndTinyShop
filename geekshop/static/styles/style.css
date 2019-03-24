@@ -20,6 +20,8 @@ body
 .top
 {
     flex-grow: 1;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .header
@@ -186,6 +188,22 @@ input[type="text"]
 .catalog-image, .catalog-link
 {
     display: block;
+}
+
+.catalog-image:hover
+{
+    outline: 2px solid #3CB371;
+}
+
+.catalog-link
+{
+    text-decoration: none;
+    text-align: center;
+}
+
+.catalog-link:hover
+{
+    color: #3CB371;
 }
 
 .catalog-items
