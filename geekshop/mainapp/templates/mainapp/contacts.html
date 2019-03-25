@@ -4,6 +4,7 @@
 {% block top %}
     <div class="top">
         {% include 'mainapp/includes/inc__main_menu.html' %}
+
         <div class="contacts-content">
             <h1>Напишите нам</h1>
             <form class="feedback" action="#">
@@ -15,11 +16,13 @@
                 <button type="submit">Отправить</button>
                 <button type="reset">Очистить</button>
             </form>
-            <h2>Телефон</h2>
-            <p>8(000)000-00-00</p>
-            <h2>Адрес</h2>
-            <p>Улица, дом</p>
-            <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A4b7790268caf512d81266f2b24f7a980c908ef5c067ff89b62fa207814c3732f&amp;width=100%25&amp;height=374&amp;lang=ru_RU&amp;scroll=true"></script>
+            {% if locations %}
+                <h2>Телефон</h2>
+                <p>{{ locations.phone }}</p>
+                <h2>Адрес</h2>
+                <p>{{ locations.address }}</p>
+                <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A4b7790268caf512d81266f2b24f7a980c908ef5c067ff89b62fa207814c3732f&amp;width=100%25&amp;height=374&amp;lang=ru_RU&amp;scroll=true"></script>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

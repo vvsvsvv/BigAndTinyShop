@@ -1,12 +1,32 @@
 from django.shortcuts import render
 
 def index(request):
-    return render(request, 'mainapp/index.html')
+    context={
+        'page_title': 'Главная'
+    }
+
+    return render(request, 'mainapp/index.html', context)
 
 
 def catalog(request):
-    return render(request, 'mainapp/catalog.html')
+    context={
+        'page_title': 'Каталог'
+    }
+
+    return render(request, 'mainapp/catalog.html', context)
 
 
 def contacts(request):
-    return render(request, 'mainapp/contacts.html')
+    locations = {
+        'city': 'Москва',
+        'phone': '8(000)000-00-00',
+        'address': 'Улица, дом'
+    }
+
+    context={
+        'page_title': 'Контакты',
+        'locations': locations
+    }
+
+
+    return render(request, 'mainapp/contacts.html', context)
