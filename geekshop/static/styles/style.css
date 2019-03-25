@@ -58,6 +58,12 @@ body
     text-decoration: none;
 }
 
+.menu-active
+{
+    color: #3CB371;
+    border-bottom: 2px solid #3CB371;
+}
+
 .menu-link:hover
 {
     color: #3CB371;

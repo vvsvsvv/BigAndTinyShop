@@ -1,8 +1,11 @@
 {% extends 'mainapp/base.html' %}
 
-{% block content %}
-    <div class="main-content">
-        <h1>Интернет-магазин &laquo;Интернет-магазин&raquo;</h1>
-        <p>Добро пожаловать!</p>
+{% block top %}
+    <div class="top">
+        {% include 'mainapp/includes/inc__main_menu.html' %}
+        <div class="main-content">
+            <h1>Интернет-магазин &laquo;Интернет-магазин&raquo;</h1>
+            <p>Добро пожаловать!</p>
+        </div>
     </div>
 {% endblock %}

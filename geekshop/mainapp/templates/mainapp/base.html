@@ -15,18 +15,8 @@
 </head>
 <body>
     <div class="container">
-        <div class="top">
-            <div class="header">
-                <a class="logo" href="/" title="На главную"><img src="/static/img/logo.jpg" width="200" alt="logo"></a>
-                <ul class="menu">
-                    <li class="menu-list"><a class="menu-link" href="/">Главная</a></li>
-                    <li class="menu-list"><a class="menu-link" href="/catalog">Каталог</a></li>
-                    <li class="menu-list"><a class="menu-link" href="/contacts">Контакты</a></li>
-                </ul>
-            </div>
-            {% block content %}
-            {% endblock %}
-        </div>
+        {% block top %}
+        {% endblock %}
         <div class="footer"><span>&copy; Все права защищены</span></div>
     </div>
 </body>
