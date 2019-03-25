@@ -1,27 +1,8 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Главная</title>
-    <link rel="stylesheet" type="text/css" href="/static/styles/style.css">
-</head>
-<body>
-    <div class="container">
-        <div class="top">
-            <div class="header">
-                <a class="logo" href="/" title="На главную"><img src="/static/img/logo.jpg" width="200" alt="logo"></a>
-                <ul class="menu">
-                    <li class="menu-list"><a class="menu-link" href="/">Главная</a></li>
-                    <li class="menu-list"><a class="menu-link" href="/catalog">Каталог</a></li>
-                    <li class="menu-list"><a class="menu-link" href="/contacts">Контакты</a></li>
-                </ul>
-            </div>
-            <div class="main-content">
-                <h1>Интернет-магазин &laquo;Интернет-магазин&raquo;</h1>
-                <p>Добро пожаловать!</p>
-            </div>
-        </div>
-        <div class="footer"><span>&copy; Все права защищены</span></div>
+{% extends 'mainapp/base.html' %}
+
+{% block content %}
+    <div class="main-content">
+        <h1>Интернет-магазин &laquo;Интернет-магазин&raquo;</h1>
+        <p>Добро пожаловать!</p>
     </div>
-</body>
-</html> 
+{% endblock %}
