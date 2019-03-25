@@ -2,8 +2,23 @@
 <div class="header">
     <a class="logo" href="{% url 'index' %}" title="На главную"><img src="{% static 'img/logo.jpg' %}" width="200" alt="logo"></a>
     <ul class="menu">
-        <li class="menu-list"><a class="menu-link menu-active" href="{% url 'index' %}">Главная</a></li>
-        <li class="menu-list"><a class="menu-link" href="{% url 'catalog' %}">Каталог</a></li>
-        <li class="menu-list"><a class="menu-link" href="{% url 'contacts' %}">Контакты</a></li>
+        <li class="menu-list">
+            <a href="{% url 'index' %}"
+            class="menu-link {% if request.resolver_match.url_name == 'index' %}menu-active{% endif %}">
+                Главная
+            </a>
+        </li>
+        <li class="menu-list">
+            <a href="{% url 'catalog' %}"
+            class="menu-link {% if request.resolver_match.url_name == 'catalog' %}menu-active{% endif %}">
+                Каталог
+            </a>
+        </li>
+        <li class="menu-list">
+            <a href="{% url 'contacts' %}"
+            class="menu-link {% if request.resolver_match.url_name == 'contacts' %}menu-active{% endif %}">
+                Контакты
+            </a>
+        </li>
     </ul>
 </div>
