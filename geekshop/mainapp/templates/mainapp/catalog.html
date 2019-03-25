@@ -1,4 +1,5 @@
 {% extends 'mainapp/base.html' %}
+{% load static %}
 
 {% block top %}
     <div class="top">
@@ -8,17 +9,17 @@
             <div class="catalog-items">
                 <div class="catalog-item">
                     <a href="#" class="catalog-image">
-                    <img src="/static/img/img1.jpg" alt="Открытка" name="Открытка" width="250"></a>
+                    <img src="{% static 'img/img1.jpg' %}" alt="Открытка" name="Открытка" width="250"></a>
                     <a href="#" class="catalog-link">Открытка-1</a>
                 </div>
                 <div class="catalog-item">
                     <a href="#" class="catalog-image">
-                    <img src="/static/img/img1.jpg" alt="Открытка" name="Открытка" width="250"></a>
+                    <img src="{% static 'img/img1.jpg' %}" alt="Открытка" name="Открытка" width="250"></a>
                     <a href="#" class="catalog-link">Открытка-2</a>
                 </div>
                 <div class="catalog-item">
                     <a href="#" class="catalog-image">
-                    <img src="/static/img/img1.jpg" alt="Открытка" name="Открытка" width="250"></a>
+                    <img src="{% static 'img/img1.jpg' %}" alt="Открытка" name="Открытка" width="250"></a>
                     <a href="#" class="catalog-link">Открытка-3</a>
                 </div>
             </div>
