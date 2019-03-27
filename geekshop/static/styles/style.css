@@ -1,6 +1,7 @@
 html, body
 {
     height: 100%;
+    font-family: sans-serif;
 }
 
 body
@@ -26,7 +27,7 @@ body
 
 .header
 {
-    height: 200px;
+    height: 250px;
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid lightgrey;
@@ -221,8 +222,25 @@ input[type="text"]
     justify-content: space-around;
 }
 
+.catalog-image
+{
+    width: 250px;
+    height: 250px;
+}
+
 .datetime
 {
     text-transform: uppercase;
 }
 
+.about
+{
+    display: block;
+    text-decoration:none;
+    color: white;
+}
+
+.about:hover
+{
+    opacity: 0.3;
+}

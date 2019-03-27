@@ -3,7 +3,7 @@ import datetime
 
 def index(request):
     context={
-        'page_title': 'клавная'
+        'page_title': 'главная'
     }
 
     return render(request, 'mainapp/index.html', context)
