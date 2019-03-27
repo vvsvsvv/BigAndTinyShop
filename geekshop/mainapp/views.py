@@ -19,10 +19,6 @@ def catalog(request):
 
 def contacts(request):
 
-    today = {
-        'datetime': datetime.datetime.now().strftime("%A, %d. %B %Y %I:%M")
-    }
-
     locations = {
         'city': 'Москва',
         'phone': '8(000)000-00-00',
@@ -32,7 +28,6 @@ def contacts(request):
     context={
         'page_title': 'контакты',
         'locations': locations,
-        'datetime': today
     }
 
 
