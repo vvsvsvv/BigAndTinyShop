@@ -161,11 +161,14 @@ input[type="text"]
 
 .footer
 {
+    display: flex;
+    justify-content: space-between;
     height: 50px;
     color: white;
     background-color: #696969;
     text-align: right;
     padding-top: 30px;
+    padding-left: 50px;
     padding-right: 50px;
     margin-top: 30px;
 }
@@ -218,9 +221,8 @@ input[type="text"]
     justify-content: space-around;
 }
 
-.time
+.datetime
 {
-    margin-top: 30px;
-    margin-bottom: 30px;
     text-transform: uppercase;
 }
+

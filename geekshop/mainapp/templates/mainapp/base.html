@@ -18,7 +18,12 @@
     <div class="container">
         {% block top %}
         {% endblock %}
-        <div class="footer"><span>&copy; Все права защищены</span></div>
+        <div class="footer">
+            <div class="datetime">
+                {% now "Y/m/d H:i" %}
+            </div>
+            <span class="copyright">&copy; Все права защищены</span>
+        </div>
     </div>
 </body>
 </html> 
