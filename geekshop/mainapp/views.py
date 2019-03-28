@@ -1,5 +1,5 @@
 from django.shortcuts import render
-import datetime
+from mainapp.models import ProductCategory, Product
 
 def index(request):
     context={
@@ -10,8 +10,23 @@ def index(request):
 
 
 def catalog(request):
+
+    categories = []
+
+    # Подгрузка изображения первого представителя категории в качестве обложки категории
+    for category in ProductCategory.objects.all():
+
+        first_product = Product.objects.filter(category=category)[0]
+
+        category_image = first_product.image
+
+        setattr(category, 'image', category_image)
+
+        categories.append(category)
+
     context={
-        'page_title': 'каталог'
+        'page_title': 'каталог',
+        'categories': categories
     }
 
     return render(request, 'mainapp/catalog.html', context)

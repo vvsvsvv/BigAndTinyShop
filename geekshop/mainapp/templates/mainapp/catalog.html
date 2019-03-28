@@ -7,27 +7,32 @@
         <div class="catalog-content">
             <h1>Каталог</h1>
             <div class="catalog-items">
-                <div class="catalog-item">
-                    <a href="#" class="catalog-image">
-                    <img src="{% static 'img/hat1.jpg' %}" alt="Шапки" name="Шапки" width="250"></a>
-                    <a href="#" class="catalog-link">Шапки</a>
-                </div>
-                <div class="catalog-item">
-                    <a href="#" class="catalog-image">
-                    <img src="{% static 'img/mittens1.jpg' %}" alt="Варежки" name="Варежки" width="250"></a>
-                    <a href="#" class="catalog-link">Варежки</a>
-                </div>
-                <div class="catalog-item">
-                    <a href="#" class="catalog-image">
-                    <img src="{% static 'img/socks_boyfriend2.jpg' %}" alt="Носки" name="Носки" width="250"></a>
-                    <a href="#" class="catalog-link">Носки</a>
-                </div>
-                <div class="catalog-item">
-                    <a href="#" class="catalog-image">
-                    <img src="{% static 'img/badge4.jpg' %}" alt="Аксессуары" name="Аксессуары" width="250"></a>
-                    <a href="#" class="catalog-link">Аксессуары</a>
-                </div>
-            </div>
+
+                {% for category in categories %}
+
+                    <div class="catalog-item">
+                        <a href="#" class="catalog-image">
+                        <img src="/media/{{ category.image }}" alt="{{ category.name }}" name="{{ category.name }}" width="250"></a>
+                        <a href="#" class="catalog-link">{{ category.name }}</a>
+                    </div>
+
+                {% endfor %}
+<!--                <div class="catalog-item">-->
+<!--                    <a href="#" class="catalog-image">-->
+<!--                    <img src="/media/products_images/mittens1.jpg" alt="Варежки" name="Варежки" width="250"></a>-->
+<!--                    <a href="#" class="catalog-link">Варежки</a>-->
+<!--                </div>-->
+<!--                <div class="catalog-item">-->
+<!--                    <a href="#" class="catalog-image">-->
+<!--                    <img src="/media/products_images/socks_boyfriend2.jpg" alt="Носки" name="Носки" width="250"></a>-->
+<!--                    <a href="#" class="catalog-link">Носки</a>-->
+<!--                </div>-->
+<!--                <div class="catalog-item">-->
+<!--                    <a href="#" class="catalog-image">-->
+<!--                    <img src="/media/products_images/badge4.jpg" alt="Аксессуары" name="Аксессуары" width="250"></a>-->
+<!--                    <a href="#" class="catalog-link">Аксессуары</a>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
     </div>
 {% endblock %}
