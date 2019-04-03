@@ -1,21 +1,21 @@
 {% load static %}
 <div class="header">
-    <a class="logo" href="{% url 'index' %}" title="На главную"><img src="{% static 'img/logo.png' %}" width="200" alt="logo"></a>
+    <a class="logo" href="{% url 'main:index' %}" title="На главную"><img src="{% static 'img/logo.png' %}" width="200" alt="logo"></a>
     <ul class="menu">
         <li class="menu-list">
-            <a href="{% url 'index' %}"
+            <a href="{% url 'main:index' %}"
             class="menu-link {% if request.resolver_match.url_name == 'index' %}menu-active{% endif %}">
                 Главная
             </a>
         </li>
         <li class="menu-list">
-            <a href="{% url 'catalog' %}"
+            <a href="{% url 'main:catalog' %}"
             class="menu-link {% if request.resolver_match.url_name == 'catalog' %}menu-active{% endif %}">
                 Каталог
             </a>
         </li>
         <li class="menu-list">
-            <a href="{% url 'contacts' %}"
+            <a href="{% url 'main:contacts' %}"
             class="menu-link {% if request.resolver_match.url_name == 'contacts' %}menu-active{% endif %}">
                 Контакты
             </a>
