@@ -1,5 +1,6 @@
 from django.core.management.base import BaseCommand
 from mainapp.models import ProductCategory, ProductSubCategory, Product
+from django.contrib.auth.models import User
 
 import json
 import os
@@ -40,3 +41,7 @@ class Command(BaseCommand):
             product['subcategory'] = _subcategory
 
         [Product.objects.create(**product) for product in products]
+
+        # create superuser
+        if not User.objects.filter(username='gjango').exists():
+            User.objects.create_superuser('django', 'django@geekshop.local', 'geekbrains')
