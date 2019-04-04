@@ -1,8 +1,9 @@
 from django.urls import path
-import adminapp.views as admin
+import authapp.views as auth
 
-app_name = 'adminapp'
+app_name = 'authapp'
 
 urlpatterns = [
-    path('', admin.index, name='index'),
+    path('login/', auth.login, name='login'),
+    # path('logout/', auth.logout, name='logout'),
 ]
