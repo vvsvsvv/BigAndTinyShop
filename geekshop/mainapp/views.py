@@ -11,6 +11,12 @@ def upload_db():
         for category in categories:
             json.dump(dict(filter(lambda x: not x[0].startswith('_'), category.__dict__.items())), categories_json)
 
+    subcategories = ProductSubCategory.objects.all()
+
+    with open('subcategories.json', 'w', encoding='utf-8') as subcategories_json:
+        for subcategory in subcategories:
+            json.dump(dict(filter(lambda x: not x[0].startswith('_'), subcategory.__dict__.items())), subcategories_json)
+
     products = Product.objects.all()
 
     with open('products.json', 'w', encoding='utf-8') as products_json:
@@ -27,20 +33,7 @@ def index(request):
 
 def catalog(request):
 
-    # categories = []
-
     # upload_db()
-
-    # # Подгрузка изображения первого представителя категории в качестве обложки категории
-    # for category in ProductCategory.objects.all():
-    #
-    #     first_product = Product.objects.filter(category=category)[0]
-    #
-    #     category_image = first_product.image
-    #
-    #     setattr(category, 'image', category_image)
-    #
-    #     categories.append(category)
 
     categories_and_subcategories = {}
 
