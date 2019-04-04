@@ -5,18 +5,39 @@
     <div class="top">
         {% include 'mainapp/includes/inc__main_menu.html' %}
         <div class="catalog-content">
-            <h1>Каталог</h1>
-            <div class="catalog-items">
+            <div class="catalog-sidebar">
 
-                {% for category in categories %}
+                {% for category in categories.items %}
 
-                    <div class="catalog-item">
-                        <a href="#" class="catalog-image">
-                        <img src="/media/{{ category.image }}" alt="{{ category.name }}" name="{{ category.name }}" width="250"></a>
-                        <a href="#" class="catalog-link">{{ category.name }}</a>
+                    <div class="catalog-category">
+                        <a href="#" class="catalog-category-link">{{ category.0.name }}</a>
+                        <div class="subcategory-list">
+                            {% for subcategory in category.1 %}
+
+                                <div class="catalog-subcategory">
+                                    <a href="#" class="catalog-subcategory-link">{{ subcategory.name }}</a>
+                                </div>
+
+                            {% endfor %}
+                        </div>
                     </div>
 
                 {% endfor %}
+
+            </div>
+            <div class="catalog-items">
+
+                {% for product in products %}
+
+                    <div class="catalog-item">
+                        <a href="#" class="product-image">
+                            <img src="/media/{{ product.image }}" alt="{{ product.name }}" name="{{ product.name }}" >
+                            <span class="product-link">{{ product.name }}</span>
+                        </a>
+                    </div>
+
+                {% endfor %}
+            </div>
         </div>
     </div>
 {% endblock %}

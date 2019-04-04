@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from mainapp.models import ProductCategory, Product
+from django.shortcuts import render, HttpResponseRedirect
+from mainapp.models import ProductCategory, ProductSubCategory, Product
+from django.urls import reverse
 import json
 
 def upload_db():
@@ -18,7 +19,7 @@ def upload_db():
 
 def index(request):
     context={
-        'page_title': 'главная'
+        'page_title': 'Big and Tiny - Knitwear for big and tiny people'
     }
 
     return render(request, 'mainapp/index.html', context)
@@ -26,27 +27,42 @@ def index(request):
 
 def catalog(request):
 
-    categories = []
+    # categories = []
 
     # upload_db()
 
-    # Подгрузка изображения первого представителя категории в качестве обложки категории
-    for category in ProductCategory.objects.all():
+    # # Подгрузка изображения первого представителя категории в качестве обложки категории
+    # for category in ProductCategory.objects.all():
+    #
+    #     first_product = Product.objects.filter(category=category)[0]
+    #
+    #     category_image = first_product.image
+    #
+    #     setattr(category, 'image', category_image)
+    #
+    #     categories.append(category)
 
-        first_product = Product.objects.filter(category=category)[0]
+    categories_and_subcategories = {}
 
-        category_image = first_product.image
+    categories = ProductCategory.objects.all()
 
-        setattr(category, 'image', category_image)
+    for category in categories:
+        categories_and_subcategories[category] = ProductSubCategory.objects.filter(category=category)
 
-        categories.append(category)
+    products = Product.objects.all()
 
     context={
         'page_title': 'каталог',
-        'categories': categories
+        'categories': categories_and_subcategories,
+        'products': products
     }
 
     return render(request, 'mainapp/catalog.html', context)
+
+
+def category(request, pk):
+    print(f'выбрано {pk}')
+    return HttpResponseRedirect(reverse('main:catalog'))
 
 
 def contacts(request):

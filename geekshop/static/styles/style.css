@@ -6,7 +6,7 @@ html, body
 
 body
 {
-    background-color: #f8f8f8;
+    background-color: #ffffff;
 }
 
 .container
@@ -16,6 +16,13 @@ body
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+}
+
+.main-content
+{
+    padding-top: 50px;
+    display: flex;
+    justify-content: space-around;
 }
 
 .top
@@ -70,6 +77,26 @@ body
     color: #3CB371;
 }
 
+.catalog-sidebar
+{
+    min-width: 150px;
+    padding: 30px;
+}
+
+.category-link
+{
+    text-decoration: none;
+    text-align: center;
+    color: #000000;
+    height: 250px;
+    width: 250px;
+}
+
+.category-link:hover img, .category-link:hover span
+{
+    opacity: 0.6;
+}
+
 .description-header
 {
     background-color: #eaeaea;
@@ -95,6 +122,13 @@ body
     text-align: left;
 }
 
+.catalog-content
+{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 30px;
+}
+
 .capitalized:first-letter
 {
     font-size: 24px;
@@ -106,17 +140,6 @@ body
     color: #008080;
     font-size: 14px;
     list-style-image: url(/styles/img/icon.png);
-}
-
-.product-image
-{
-    outline: 2px solid green;
-    margin: 30px;
-}
-
-.product-image:hover
-{
-    outline: none;
 }
 
 .feedback
@@ -195,37 +218,77 @@ input[type="text"]
     background-color: #3CB371;
 }
 
-.catalog-image, .catalog-link
+.catalog-category
 {
+    padding: 10px;
+}
+
+.catalog-category-link
+{
+    margin-bottom: 10px;
     display: block;
-}
-
-.catalog-image:hover
-{
-    outline: 2px solid #3CB371;
-}
-
-.catalog-link
-{
+    font-size: 10pt;
     text-decoration: none;
     text-align: center;
+    text-transform: uppercase;
 }
 
-.catalog-link:hover
+.catalog-category-link:hover
 {
     color: #3CB371;
+}
+
+.catalog-category
+{
+    padding: 5px;
+}
+
+.catalog-subcategory-link
+{
+    margin-bottom: 5px;
+    display:block;
+    font-size: 8pt;
+    text-decoration: none;
+    text-align: right;
+    text-transform: uppercase;
+}
+
+.catalog-subcategory-link:hover
+{
+    color: #9CB371;
 }
 
 .catalog-items
 {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
-.catalog-image
+.product-image
+{
+    display: block;
+    width: 250px;
+    height: 250px;
+    margin: 50px; 30px;
+    text-align: center;
+}
+
+.product-image img
 {
     width: 250px;
     height: 250px;
+    object-fit: cover;
+}
+
+.product-link
+{
+    text-decoration: none;
+}
+
+.catalog-item:hover .product-image, .catalog-item:hover .product-link
+{
+    opacity: 0.6;
 }
 
 .datetime
