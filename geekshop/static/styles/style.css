@@ -272,6 +272,7 @@ input[type="text"]
     height: 250px;
     margin: 50px; 30px;
     text-align: center;
+    text-decoration: none;
 }
 
 .product-image img
@@ -279,11 +280,6 @@ input[type="text"]
     width: 250px;
     height: 250px;
     object-fit: cover;
-}
-
-.product-link
-{
-    text-decoration: none;
 }
 
 .catalog-item:hover .product-image, .catalog-item:hover .product-link

@@ -9,7 +9,7 @@ urlpatterns = [
 
     path('catalog/', mainapp.catalog, name='catalog'),
 
-    path('<int:pk>', mainapp.catalog, name='category'),
+    path('<int:pk>', mainapp.category, name='category'),
 
     path('contacts/', mainapp.contacts, name='contacts'),
 ]

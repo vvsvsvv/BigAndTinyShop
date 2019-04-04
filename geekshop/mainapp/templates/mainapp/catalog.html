@@ -15,7 +15,7 @@
                             {% for subcategory in category.1 %}
 
                                 <div class="catalog-subcategory">
-                                    <a href="#" class="catalog-subcategory-link">{{ subcategory.name }}</a>
+                                    <a href="{% url 'main:category' subcategory.id %}" class="catalog-subcategory-link">{{ subcategory.name }}</a>
                                 </div>
 
                             {% endfor %}
@@ -31,7 +31,7 @@
 
                     <div class="catalog-item">
                         <a href="#" class="product-image">
-                            <img src="/media/{{ product.image }}" alt="{{ product.name }}" name="{{ product.name }}" >
+                            <img src="/media/{{ product.image }}" alt="{{ product.name }}" name="{{ product.name }}">
                             <span class="product-link">{{ product.name }}</span>
                         </a>
                     </div>
