@@ -20,5 +20,16 @@
                 Контакты
             </a>
         </li>
+        <li class="menu-list">
+            {% if user.is_authenticated %}
+                <a href="{% url 'auth:logout' %}" class="menu-link">
+                    Выйти
+                </a>
+            {% else %}
+                <a href="{% url 'auth:login' %}" class="menu-link">
+                    Войти
+                </a>
+            {% endif %}
+        </li>
     </ul>
 </div>

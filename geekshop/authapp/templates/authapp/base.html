@@ -1,23 +1,33 @@
 <!DOCTYPE html>
-
 {% load static %}
-
-<html lang="ru">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>
-        {{ page_title|title }}
+	<meta charset="utf-8">
+	<title>
+        {% block title %}
+            {{ title|title }}
+        {% endblock %}
     </title>
     {% block css %}
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     {% endblock %}
     {% block js %}
+
     {% endblock %}
 </head>
 <body>
-    <div class="container">
-        {% block top %}
-        {% endblock %}
+	<div class="container">
+        <div class="top">
+            <div class="login">
+                <div class="login-header">
+                    <span>Вход в систему</span>
+                </div>            
+                
+                {% block content %}
+
+                {% endblock %}
+            </div>
+        </div>
         <div class="footer">
             <div class="datetime">
                 {% now "Y/m/d H:i" %}
@@ -27,4 +37,4 @@
         </div>
     </div>
 </body>
-</html> 
+</html>
