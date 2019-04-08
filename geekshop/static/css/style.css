@@ -326,6 +326,17 @@ input[type="text"]
     margin-bottom: 20px;
 }
 
+.form-horizontal ul
+{
+    list-style-type: none;
+}
+
+.form-horizontal ul>li
+{
+    padding-bottom: 10px;
+}
+
+
 .form-control
 {
     width: 100%;

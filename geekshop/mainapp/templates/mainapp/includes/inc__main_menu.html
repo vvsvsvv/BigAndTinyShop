@@ -20,6 +20,13 @@
                 Контакты
             </a>
         </li>
+        {% if user.is_authenticated %}
+            <li class="menu-list">
+                <a href="{% url 'auth:edit' %}" class="menu-link">
+                    {{ user.first_name|default:'Пользователь'|title }}
+                </a>
+            </li>
+        {% endif %}
         <li class="menu-list">
             {% if user.is_authenticated %}
                 <a href="{% url 'auth:logout' %}" class="menu-link">
