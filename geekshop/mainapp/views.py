@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
 from mainapp.models import ProductCategory, ProductSubCategory, Product
 from django.urls import reverse
+from basketapp.models import Basket
 import json
 
 def upload_db():
@@ -31,9 +32,18 @@ def upload_db():
         json.dump(product_list, products_json, default=float)
 
 
+def get_basket(request):
+    if request.user.is_authenticated:
+        return request.user.basket.all()
+    else:
+        return []
+
+
+
 def index(request):
     context={
-        'page_title': 'Big and Tiny - Knitwear for big and tiny people'
+        'page_title': 'Big and Tiny - Knitwear for big and tiny people',
+        'basket': get_basket(request)
     }
 
     return render(request, 'mainapp/index.html', context)
@@ -63,7 +73,9 @@ def catalog(request, category_pk=0, subcategory_pk=0):
     context={
         'page_title': 'каталог',
         'categories': categories_and_subcategories,
-        'products': products
+        'products': products,
+        'basket': get_basket(request)
+
     }
 
     return render(request, 'mainapp/catalog.html', context)
@@ -80,6 +92,7 @@ def contacts(request):
     context={
         'page_title': 'контакты',
         'locations': locations,
+        'basket': get_basket(request)
     }
 
 

@@ -38,5 +38,12 @@
                 </a>
             {% endif %}
         </li>
+        <a href="#" class="menu-link">
+            <i class="fas fa-shopping-basket">
+                <span>
+                    {% if basket %} {{ basket|length }} {% endif %}
+                </span>
+            </i>
+        </a>
     </ul>
 </div>

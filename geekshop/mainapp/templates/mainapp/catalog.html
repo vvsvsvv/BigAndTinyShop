@@ -34,7 +34,7 @@
                 {% for product in products %}
 
                     <div class="catalog-item">
-                        <a href="#" class="product-image">
+                        <a href="{% url 'basket:add' product.id %}" class="product-image">
                             <img src="/media/{{ product.image }}" alt="{{ product.name }}" name="{{ product.name }}">
                             <span class="product-link">{{ product.name }}</span>
                         </a>

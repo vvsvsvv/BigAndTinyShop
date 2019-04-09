@@ -5,4 +5,5 @@ app_name = 'basketapp'
 
 urlpatterns = [
     path('', basket.index, name='index'),
+    path('add/<int:pk>', basket.add, name='add'),
 ]
