@@ -10,12 +10,16 @@
                 {% for category in categories.items %}
 
                     <div class="catalog-category">
-                        <a href="#" class="catalog-category-link">{{ category.0.name }}</a>
-                        <div class="subcategory-list">
+                        <a href="{% url 'main:catalog' category.0.id 0 %}" class="catalog-category-link">{{ category.0.name }}</a>
+                        <div class="catalog-subcategory-list">
                             {% for subcategory in category.1 %}
 
                                 <div class="catalog-subcategory">
-                                    <a href="{% url 'main:catalog' subcategory.id %}" class="catalog-subcategory-link">{{ subcategory.name }}</a>
+                                    <a href="{% url 'main:catalog' category.0.id subcategory.id %}"
+                                       class="catalog-subcategory-link
+                                       {% if request.resolver_match.kwargs.subcategory_pk|add:'0' == subcategory.id %}
+                                       active
+                                       {% endif %}">{{ subcategory.name }}</a>
                                 </div>
 
                             {% endfor %}

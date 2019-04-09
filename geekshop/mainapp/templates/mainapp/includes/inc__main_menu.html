@@ -4,19 +4,19 @@
     <ul class="menu">
         <li class="menu-list">
             <a href="{% url 'main:index' %}"
-            class="menu-link {% if request.resolver_match.url_name == 'index' %}menu-active{% endif %}">
+            class="menu-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}">
                 Главная
             </a>
         </li>
         <li class="menu-list">
-            <a href="{% url 'main:catalog' 0 %}"
-            class="menu-link {% if request.resolver_match.url_name == 'catalog/0/' %}menu-active{% endif %}">
+            <a href="{% url 'main:catalog' 0 0 %}"
+            class="menu-link {% if request.resolver_match.url_name == 'catalog' %}active{% endif %}">
                 Каталог
             </a>
         </li>
         <li class="menu-list">
             <a href="{% url 'main:contacts' %}"
-            class="menu-link {% if request.resolver_match.url_name == 'contacts' %}menu-active{% endif %}">
+            class="menu-link {% if request.resolver_match.url_name == 'contacts' %}active{% endif %}">
                 Контакты
             </a>
         </li>
