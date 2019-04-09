@@ -5,13 +5,13 @@
     <div class="top">
         {% include 'mainapp/includes/inc__main_menu.html' %}
         <div class="main-content">
-            <a href="{% url 'main:catalog' %}" class="category-link">
+            <a href="{% url 'main:catalog' 0 %}" class="category-link">
                 <div class="category-image">
                     <img src="{% static 'img/kids-logo.jpg' %}" alt="Для детей" width="250">
                 </div>
                 <span>Для детей</span>
             </a>
-            <a href="{% url 'main:catalog' %}" class="category-link">
+            <a href="{% url 'main:catalog' 0 %}" class="category-link">
                 <div class="category-image">
                     <img src="{% static 'img/adult-logo.jpg' %}" alt="Для взрослых" width="250">
                 </div>

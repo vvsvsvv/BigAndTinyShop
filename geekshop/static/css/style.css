@@ -243,6 +243,16 @@ input[type="text"]
     padding: 5px;
 }
 
+.catalog-subcategory-list
+{
+    display: none;
+}
+
+.visible
+{
+    display: block;
+}
+
 .catalog-subcategory-link
 {
     color: #000000;

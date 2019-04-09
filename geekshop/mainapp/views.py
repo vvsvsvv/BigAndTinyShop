@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
 from mainapp.models import ProductCategory, ProductSubCategory, Product
 from django.urls import reverse
 import json
@@ -39,8 +39,7 @@ def index(request):
     return render(request, 'mainapp/index.html', context)
 
 
-def catalog(request):
-
+def catalog(request, pk=0):
     # upload_db()
 
     categories_and_subcategories = {}
@@ -48,10 +47,17 @@ def catalog(request):
     categories = ProductCategory.objects.all()
 
     for category in categories:
-        categories_and_subcategories[category] = ProductSubCategory.objects.filter(category=category)
+        categories_and_subcategories[category] = category.productsubcategory_set.all()
 
-    products = Product.objects.all()
-
+    # products = Product.objects.all()
+##############################
+    if int(pk) == 0:
+        # subcategory = {'name': 'все'}
+        products = Product.objects.all().order_by('price')
+    else:
+        subcategory = get_object_or_404(ProductSubCategory, pk=pk)
+        products = subcategory.product_set.order_by('price')
+#############################3
     context={
         'page_title': 'каталог',
         'categories': categories_and_subcategories,
@@ -64,6 +70,28 @@ def catalog(request):
 def category(request, pk):
     print(f'выбрано {pk}')
     return HttpResponseRedirect(reverse('main:catalog'))
+
+
+# def subcategory(request, pk):
+#     links_menu = ProductSubCategory.objects.all()
+#
+#     if int(pk) == 0:
+#         subcategory = {'name': 'все'}
+#         products = Product.objects.all().order_by('price')
+#     else:
+#         subcategory = get_object_or_404(ProductSubCategory, pk=pk)
+#         products = subcategory.product_set.order_by('price')
+#
+#     context = {
+#         'title': 'продукты',
+#         # 'links_menu': links_menu,
+#         # 'subcategory': subcategory,
+#         'products': products,
+#         # 'basket': get_basket(request),
+#     }
+#
+#     return render(request, 'mainapp/catalog.html', context)
+
 
 
 def contacts(request):

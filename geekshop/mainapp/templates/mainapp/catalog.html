@@ -15,7 +15,7 @@
                             {% for subcategory in category.1 %}
 
                                 <div class="catalog-subcategory">
-                                    <a href="{% url 'main:category' subcategory.id %}" class="catalog-subcategory-link">{{ subcategory.name }}</a>
+                                    <a href="{% url 'main:catalog' subcategory.id %}" class="catalog-subcategory-link">{{ subcategory.name }}</a>
                                 </div>
 
                             {% endfor %}

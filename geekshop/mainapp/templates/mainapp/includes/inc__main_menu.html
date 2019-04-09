@@ -9,8 +9,8 @@
             </a>
         </li>
         <li class="menu-list">
-            <a href="{% url 'main:catalog' %}"
-            class="menu-link {% if request.resolver_match.url_name == 'catalog' %}menu-active{% endif %}">
+            <a href="{% url 'main:catalog' 0 %}"
+            class="menu-link {% if request.resolver_match.url_name == 'catalog/0/' %}menu-active{% endif %}">
                 Каталог
             </a>
         </li>
