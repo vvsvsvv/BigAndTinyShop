@@ -38,12 +38,14 @@
                 </a>
             {% endif %}
         </li>
-        <a href="#" class="menu-link">
-            <i class="fas fa-shopping-basket">
-                <span>
-                    {% if basket %} {{ basket|length }} {% endif %}
-                </span>
-            </i>
+        <a href="#" class="menu-link basket">
+            <i class="fas fa-shopping-basket"></i>
+            <span>
+                {% if basket %}
+                    {{ basket.0.total_cost|floatformat:0 }} руб
+                    ({{ basket.0.total_quantity }} шт)
+                {% endif %}
+            </span>
         </a>
     </ul>
 </div>

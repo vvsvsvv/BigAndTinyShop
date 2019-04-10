@@ -79,6 +79,12 @@ body
     color: #cfe1e9;
 }
 
+.basket
+{
+    text-transform: lowercase;
+    font-weight: lighter;
+}
+
 .catalog-sidebar
 {
     min-width: 150px;
