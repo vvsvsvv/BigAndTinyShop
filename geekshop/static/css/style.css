@@ -389,10 +389,122 @@ input[type="text"]
 
 .btn:hover
 {
-    outline: 1px solid grey;
+    border-bottom: 2px solid #000000;
 }
 
 .btn:active
 {
     opacity: 0.8;
+}
+
+.basket-container
+{
+    width: 70%;
+    text-align: center;
+    padding: 50px;
+}
+
+.basket-head
+{
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.basket-record 
+{
+    margin-bottom: 30px;
+    height: 150px;
+/*    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;*/
+    position: relative;
+    float: none;
+}
+
+.basket-record img
+{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-right: 30px;
+    position: relative;
+    float: left;
+}
+
+.basket-list input[type="number"] 
+{
+    width: 3em;
+    position: relative;
+    display: block;
+    float: left;
+}
+
+.basket-list span.category-name 
+{
+    margin-left: 2em;
+    width: 10em;
+    position: relative;
+    display: block;
+    float: left;
+}
+
+.basket-list span.product-name 
+{
+    margin-left: 1em;
+    width: 8em;
+    position: relative;
+    display: block;
+    float: left;
+}
+
+.basket-list span.product-price 
+{
+    margin-left: 1em;
+    width: 7em;
+    position: relative;
+    display: block;
+    float: left;
+}
+
+.basket-list span.product-cost 
+{
+    margin-left: 1em;
+    width: 7em;
+    position: relative;
+    display: block;
+    float: left;
+}
+
+.btn-delete
+{
+    width: 7em;
+    position: relative;
+    display: block;
+    float: left;
+    padding: 5px;
+    text-decoration: none;
+    color: #000000;
+    background-color: #FA5858;
+    border-radius: 15px;
+}
+
+.btn-delete:hover
+{
+    opacity: 0.8;
+}
+
+.basket-summary
+{
+    margin: 30px 20px;
+}
+
+.btn-index
+{
+    color: #000000;
+    margin: 30px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    text-transform: uppercase;
 }

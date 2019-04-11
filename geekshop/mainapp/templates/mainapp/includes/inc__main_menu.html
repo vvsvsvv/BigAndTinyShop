@@ -38,7 +38,7 @@
                 </a>
             {% endif %}
         </li>
-        <a href="#" class="menu-link basket">
+        <a href="{% url 'basket:index' %}" class="menu-link basket">
             <i class="fas fa-shopping-basket"></i>
             <span>
                 {% if basket %}

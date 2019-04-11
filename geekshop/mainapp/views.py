@@ -81,6 +81,15 @@ def catalog(request, category_pk=0, subcategory_pk=0):
     return render(request, 'mainapp/catalog.html', context)
 
 
+def product(request, pk):
+    title = 'страница продукта'
+
+    context = {
+        'title': title
+        'basket': get_basket(request)
+    }
+
+
 def contacts(request):
 
     locations = {
