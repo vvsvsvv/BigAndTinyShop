@@ -515,7 +515,7 @@ input[type="text"]
     justify-content: space-around;
 }
 
-.product-name
+.product-page-name
 {
     margin: 50px;
     text-transform: uppercase;
@@ -527,7 +527,7 @@ input[type="text"]
     margin: 30px;
 }
 
-.product-price
+.product-page-price
 {
     margin: 30px 20px;
     font-size: 16px;

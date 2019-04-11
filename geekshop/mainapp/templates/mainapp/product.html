@@ -8,14 +8,14 @@
             <img src="/media/{{ object.image }}" alt="{{ object.description }}" class="product-image product-page-image">
 
             <div class="product-description">
-                <div class="product-name">
+                <div class="product-page-name">
                     {{ object.name|title }}
                 </div>
                 <h3 class="description-header">Характеристики товара</h3>
                 <div class="product-characteristics">
                     {{ object.description|title }}
                 </div>
-                <div class="product-price">
+                <div class="product-page-price">
                     Цена: {{ object.price }}&nbspруб
                 </div>
                 <a href="{% url 'basket:add' object.pk %}" class="button-buy">
