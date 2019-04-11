@@ -533,3 +533,140 @@ input[type="text"]
     font-size: 16px;
     font-weight: bold;
 }
+
+.user-delete {
+    margin: 50px auto;
+    width: 600px;
+    font-size: 150%;
+}
+
+.user-delete .btn {
+    display: block;
+    float:left;
+    margin: 25px;
+    width: 150px;
+    color: #111;
+}
+
+.user-delete a {
+    color: #111;
+    text-decoration: none;
+}
+
+.users-list {
+    margin-left: 150px;
+}
+
+.users-list a {
+    color: #555;
+    text-decoration: none;
+}
+
+.users-list .new-user {
+    margin-left: 190px;
+}
+
+.users-list button {
+    border: 1px solid #eaeaea;
+    border-radius: 5px;
+    height: 30px;
+    margin: 5px auto;
+    padding: 0 15px;
+}
+
+.user-record {
+    height: 125px;
+    margin: 15px auto;
+    position: relative;
+}
+
+.user-record.not-active {
+    opacity: 0.5;
+}
+
+.user-record img {
+    display: block;
+    float: left;
+    height: 125px;
+    border-radius: 25px;
+}
+
+.user-record .user-name {
+    display: block;
+    float: left;
+    margin-top: 15px;
+    margin-left: 25px;
+    width: 175px;
+}
+
+.user-record .user-name a {
+    color: #555;
+}
+
+.user-record .user-name p {
+    /*font-weight: bold;*/
+    margin: 10px auto;
+}
+
+.user-record .user-email {
+    display: block;
+    float: left;
+    margin-top: 40px;
+    margin-left: 25px;
+    width: 175px;
+}
+
+.user-record .user-age {
+    display: block;
+    float: left;
+    margin-top: 40px;
+    margin-left: 25px;
+    width: 45px;
+}
+
+.user-record .user-role {
+    display: block;
+    float: left;
+    margin-top: 15px;
+    margin-left: 25px;
+    width: 125px;
+}
+
+.user-record .user-lastlogin {
+    display: block;
+    float: left;
+    margin-top: 40px;
+    margin-left: 25px;
+    width: 175px;
+}
+
+
+.admin-head {
+    margin-top: 10px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.admin-menu {
+
+    left: 15px;
+    top: 20px;
+    height: 40px;
+    width: 100%;
+}
+
+.admin-menu ul.menu{
+    display: flex;
+    justify-content: space-between;
+    /*float: none;*/
+    width: 550px;
+    height: 50px;
+    margin: auto;
+    color: #555;
+}
+
+.admin-menu ul.menu li
+{
+    display: block;
+    margin: 30px 20px;
+}

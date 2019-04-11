@@ -1,0 +1,17 @@
+<ul class="menu">
+    <li>
+        <a href="{% url 'main:index' %}" class="admin-menu-link">вернуться на сайт</a>
+    </li>
+    <li>
+        <a href="{% url 'myadmin:index' %}"
+           class="admin-menu-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}">
+            пользователи
+        </a>
+    </li>
+    <li>
+        <a href="{#% url 'myadmin:categories' %#}"
+           class="admin-menu-link {#% if request.resolver_match.url_name == 'categories' or category.name %#}active{#% endif %#}">
+            категории{% if category %}:<span>{{ category.name }}</span>{% endif %}
+        </a>
+    </li>
+</ul>
