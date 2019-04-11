@@ -147,7 +147,7 @@ body
 {
     color: #008080;
     font-size: 14px;
-    list-style-image: url(/styles/img/icon.png);
+    margin: 30px 20px;
 }
 
 .feedback
@@ -507,4 +507,29 @@ input[type="text"]
     font-weight: bold;
     text-decoration: none;
     text-transform: uppercase;
+}
+
+.product-info 
+{
+    display: flex;
+    justify-content: space-around;
+}
+
+.product-name
+{
+    margin: 50px;
+    text-transform: uppercase;
+    font-size: 32px;
+}
+
+.product-characteristics
+{
+    margin: 30px;
+}
+
+.product-price
+{
+    margin: 30px 20px;
+    font-size: 16px;
+    font-weight: bold;
 }

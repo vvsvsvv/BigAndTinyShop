@@ -85,9 +85,12 @@ def product(request, pk):
     title = 'страница продукта'
 
     context = {
-        'title': title
-        'basket': get_basket(request)
+        'title': title,
+        'object': get_object_or_404(Product, pk=pk),
+        'basket': get_basket(request),
     }
+
+    return render(request, 'mainapp/product.html', context)
 
 
 def contacts(request):

@@ -1,0 +1,30 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{% block top %}
+    <div class="top">
+        {% include 'mainapp/includes/inc__main_menu.html' %}
+        <div class="product-info">
+            <img src="/media/{{ object.image }}" alt="{{ object.description }}" class="product-image product-page-image">
+
+            <div class="product-description">
+                <div class="product-name">
+                    {{ object.name|title }}
+                </div>
+                <h3 class="description-header">Характеристики товара</h3>
+                <div class="product-characteristics">
+                    {{ object.description|title }}
+                </div>
+                <div class="product-price">
+                    Цена: {{ object.price }}&nbspруб
+                </div>
+                <a href="{% url 'basket:add' object.pk %}" class="button-buy">
+                    Заказать
+                </a>
+            </div>
+
+        </div>
+
+
+    </div>
+{% endblock %}
