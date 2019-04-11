@@ -6,6 +6,7 @@ from django.urls import reverse
 # Create your views here.
 def login(request):
     title = 'вход в систему'
+    next = request.GET['next'] if 'next' in request.GET.keys() else ''
 
     if request.method == 'POST':
         form = ShopUserLoginForm(data=request.POST)
@@ -16,14 +17,18 @@ def login(request):
             user = auth.authenticate(username=username, password=password)
             if user and user.is_active:
                 auth.login(request, user)
-                return HttpResponseRedirect(reverse('main:index'))
+                if 'next' in request.POST.keys():
+                    return HttpResponseRedirect(request.POST['next'])
+                else:
+                    return HttpResponseRedirect(reverse('main:index'))
 
     else:
         form = ShopUserLoginForm()
 
     context = {
         'title': title,
-        'form': form
+        'form': form,
+        'next': next
     }
     return render(request, 'authapp/login.html', context)
 

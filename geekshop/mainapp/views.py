@@ -85,7 +85,7 @@ def product(request, pk):
     title = 'страница продукта'
 
     context = {
-        'title': title,
+        'page_title': title,
         'object': get_object_or_404(Product, pk=pk),
         'basket': get_basket(request),
     }
