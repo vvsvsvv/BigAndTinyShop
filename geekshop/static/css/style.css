@@ -413,11 +413,9 @@ input[type="text"]
 {
     margin-bottom: 30px;
     height: 150px;
-/*    display: flex;
+    display: flex;
     justify-content: space-between;
-    flex-wrap: wrap;*/
-    position: relative;
-    float: none;
+    align-items: flex-start;
 }
 
 .basket-record img
@@ -426,52 +424,40 @@ input[type="text"]
     height: 150px;
     object-fit: cover;
     margin-right: 30px;
-    position: relative;
-    float: left;
 }
 
 .basket-list input[type="number"] 
 {
     width: 3em;
-    position: relative;
     display: block;
-    float: left;
 }
 
 .basket-list span.category-name 
 {
     margin-left: 2em;
     width: 10em;
-    position: relative;
     display: block;
-    float: left;
 }
 
 .basket-list span.product-name 
 {
     margin-left: 1em;
     width: 8em;
-    position: relative;
     display: block;
-    float: left;
 }
 
 .basket-list span.product-price 
 {
     margin-left: 1em;
     width: 7em;
-    position: relative;
     display: block;
-    float: left;
 }
 
 .basket-list span.product-cost 
 {
     margin-left: 1em;
     width: 7em;
-    position: relative;
     display: block;
-    float: left;
 }
 
 .btn-edit
