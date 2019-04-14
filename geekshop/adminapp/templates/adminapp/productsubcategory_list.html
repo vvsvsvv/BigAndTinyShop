@@ -3,9 +3,9 @@
 
 {% block content %}
 <div class="categories-list">
-    <a href="{#% url 'myadmin:category_create' %#}"
+    <a href="{#% url 'myadmin:subcategory_create' %#}"
        class="btn-new-user">
-        новая категория
+        новая подкатегория
     </a>
     {% for object in object_list %}
     <div class="category-record {% if not object.is_active %}not_active{% endif %}">
@@ -13,15 +13,15 @@
             {{ object.name|title }}
         </div>
         <div class="category-actions">
-            <a href="{% url 'myadmin:subcategories' object.pk %}"
+            <a href="{#% url 'myadmin:subcategories' object.pk %#}"
                class="btn-subcats">
-                подкатегории
+                товары
             </a>
-            <a href="{#% url 'myadmin:productcategory_update' object.pk %#}"
+            <a href="{#% url 'myadmin:productsubategory_update' object.pk %#}"
                class="btn-edit">
                 редактировать
             </a>
-            <a href="{#% url 'myadmin:category_delete' object.pk %#}"
+            <a href="{#% url 'myadmin:subcategory_delete' object.pk %#}"
                class="btn-delete">
                 удалить
             </a>

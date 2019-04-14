@@ -6,4 +6,5 @@ app_name = 'adminapp'
 urlpatterns = [
     path('', adminapp.index, name='index'),
     path('categories/', adminapp.categories, name='categories'),
+    path('subcategories/<int:pk>', adminapp.subcategories, name='subcategories'),
 ]

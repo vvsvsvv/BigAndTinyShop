@@ -11,7 +11,7 @@
     <li>
         <a href="{% url 'myadmin:categories' %}"
            class="menu-link {% if request.resolver_match.url_name == 'categories' or category.name %}active{% endif %}">
-            товары{% if category %}:<span>{{ category.name }}</span>{% endif %}
+            товары{% if category %}: <span>{{ category.name }}</span>{% endif %}
         </a>
     </li>
 </ul>

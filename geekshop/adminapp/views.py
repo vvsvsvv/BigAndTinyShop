@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from authapp.models import ShopUser
 from mainapp.models import ProductCategory, ProductSubCategory
 
@@ -29,4 +29,16 @@ def categories(request):
 
 
 def subcategories(request, pk):
-    title = f'админка/подкатегории ({ProductCategory.objects.filter(pk=pk).name})'
+
+    category = get_object_or_404(ProductCategory, pk=pk)
+
+    title = f'админка/подкатегории ({category.name})'
+
+    object_list = ProductSubCategory.objects.filter(category__pk=pk).order_by('name')
+
+    context = {
+        'title': title,
+        'category': category,
+        'object_list': object_list
+    }
+    return render(request, 'adminapp/productsubcategory_list.html', context)
