@@ -1,8 +1,13 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
+from django.urls import reverse
+from django.contrib.auth.decorators import user_passes_test
+
 from authapp.models import ShopUser
-from mainapp.models import ProductCategory, ProductSubCategory, Product
+from mainapp.models import ProductCategory, ProductSubCategory
+from adminapp.forms import ShopUserUpdateAdminForm, ShopUserCreationAdminForm
 
 
+@user_passes_test(lambda x: x.is_superuser)
 def index(request):
     title = 'админка/пользователи'
 
@@ -17,6 +22,7 @@ def index(request):
     return render(request, 'adminapp/index.html', context)
 
 
+@user_passes_test(lambda x: x.is_superuser)
 def categories(request):
     title = 'админка/категории'
 
@@ -28,6 +34,7 @@ def categories(request):
     return render(request, 'adminapp/productcategory_list.html', context)
 
 
+@user_passes_test(lambda x: x.is_superuser)
 def subcategories(request, pk):
 
     category = get_object_or_404(ProductCategory, pk=pk)
@@ -44,6 +51,7 @@ def subcategories(request, pk):
     return render(request, 'adminapp/productsubcategory_list.html', context)
 
 
+@user_passes_test(lambda x: x.is_superuser)
 def products(request, category_pk, subcategory_pk):
 
     category = get_object_or_404(ProductCategory, pk=category_pk)
@@ -60,3 +68,62 @@ def products(request, category_pk, subcategory_pk):
         'object_list': object_list
     }
     return render(request, 'adminapp/product_list.html', context)
+
+
+def shopuser_create(request):
+    title = 'пользователи/создание'
+
+    if request.method == 'POST':
+        form = ShopUserCreationAdminForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('myadmin:index'))
+    else:
+        form = ShopUserCreationAdminForm()
+
+    context = {
+        'title': title,
+        'form': form
+    }
+
+    return render(request, 'adminapp/shopuser_update.html', context)
+
+
+def shopuser_update(request, pk):
+    title = 'пользователи/редактирование'
+
+    current_user = get_object_or_404(ShopUser, pk=pk)
+    if request.method == 'POST':
+        form = ShopUserUpdateAdminForm(request.POST, request.FILES, instance=current_user)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('myadmin:index'))
+    else:
+        form = ShopUserUpdateAdminForm(instance=current_user)
+
+    context = {
+        'title': title,
+        'form': form
+    }
+
+    return render(request, 'adminapp/shopuser_update.html', context)
+
+
+def shopuser_delete(request, pk):
+    title = 'пользователи/удаление'
+
+    object = get_object_or_404(ShopUser, pk=pk)
+
+    if request.method == 'POST':
+        # user.delete()
+        # вместо удаления делаем неактивным
+        object.is_active = False
+        object.save()
+        return HttpResponseRedirect(reverse('myadmin:index'))
+
+    context = {
+        'title': title,
+        'user_to_delete': object
+    }
+
+    return render(request, 'adminapp/shopuser_delete.html', context)

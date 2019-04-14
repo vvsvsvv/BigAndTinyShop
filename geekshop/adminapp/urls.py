@@ -8,4 +8,8 @@ urlpatterns = [
     path('categories/', adminapp.categories, name='categories'),
     path('subcategories/<int:pk>/', adminapp.subcategories, name='subcategories'),
     path('products/<int:category_pk>/<int:subcategory_pk>/', adminapp.products, name='products'),
+
+    path('shopuser/create/', adminapp.shopuser_create, name='shopuser_create'),
+    path('shopuser/update/<int:pk>', adminapp.shopuser_update, name='shopuser_update'),
+    path('shopuser/delete/<int:pk>', adminapp.shopuser_delete, name='shopuser_delete'),
 ]
