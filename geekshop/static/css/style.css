@@ -79,7 +79,7 @@ body
     color: #cfe1e9;
 }
 
-.basket
+.basket-link
 {
     text-transform: lowercase;
     font-weight: lighter;
@@ -194,13 +194,10 @@ input[type="text"]
 {
     display: flex;
     justify-content: space-between;
-    height: 50px;
     color: white;
     background-color: #696969;
     text-align: right;
-    padding-top: 30px;
-    padding-left: 50px;
-    padding-right: 50px;
+    padding: 30px 50px;
     margin-top: 30px;
 }
 
@@ -277,29 +274,30 @@ input[type="text"]
     flex-wrap: wrap;
 }
 
-.product-image
+.product-link
 {
     display: block;
     width: 250px;
     height: 250px;
-    margin: 50px; 30px;
+    margin: 50px 30px;
     text-align: center;
     text-decoration: none;
 }
 
-.product-image img
+.product-image
 {
+    /*margin: 50px 30px;*/
     width: 250px;
     height: 250px;
     object-fit: cover;
 }
 
-.product-link
+.product-name-link
 {
     color: #000000;
 }
 
-.catalog-item:hover .product-image, .catalog-item:hover .product-link
+.catalog-item:hover .product-link, .catalog-item:hover .product-name-link
 {
     opacity: 0.6;
 }
@@ -389,7 +387,7 @@ input[type="text"]
 
 .btn:hover
 {
-    border-bottom: 2px solid #000000;
+    box-shadow: inset 0 -2px 0 #000000;
 }
 
 .btn:active
@@ -476,14 +474,32 @@ input[type="text"]
     float: left;
 }
 
+.btn-edit
+{
+    width: 7em;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+    text-decoration: none;
+    text-align: center;
+    color: #000000;
+    background-color: #66CDAA;
+    border-radius: 15px;
+}
+
+.btn-edit:hover
+{
+    opacity: 0.8;
+}
+
 .btn-delete
 {
     width: 7em;
-    position: relative;
     display: block;
-    float: left;
     padding: 5px;
     text-decoration: none;
+    text-align: center;
     color: #000000;
     background-color: #FA5858;
     border-radius: 15px;
@@ -513,11 +529,12 @@ input[type="text"]
 {
     display: flex;
     justify-content: space-around;
+    padding-top: 50px;
 }
 
 .product-page-name
 {
-    margin: 50px;
+    margin-bottom: 30px;
     text-transform: uppercase;
     font-size: 32px;
 }
@@ -542,7 +559,6 @@ input[type="text"]
 
 .user-delete .btn {
     display: block;
-    float:left;
     margin: 25px;
     width: 150px;
     color: #111;
@@ -553,17 +569,33 @@ input[type="text"]
     text-decoration: none;
 }
 
-.users-list {
-    margin-left: 150px;
+.users-list, .categories-list
+{
+    width: 960px;
+    margin: 10px auto;
 }
 
 .users-list a {
-    color: #555;
+    color: #000;
     text-decoration: none;
 }
 
-.users-list .new-user {
-    margin-left: 190px;
+.btn-new-user
+{
+    text-decoration: none;
+    color: #000;
+    text-align: center; 
+    display: block;
+    border: 2px solid #eaeaea;
+    border-radius: 5px;
+    height: 30px;
+    width: 150px;
+    padding: 5px 10px;
+}
+
+.btn-new-user:hover
+{
+    background-color: #eaeaea;
 }
 
 .users-list button {
@@ -574,26 +606,29 @@ input[type="text"]
     padding: 0 15px;
 }
 
-.user-record {
+.user-record, .category-record {
     height: 125px;
     margin: 15px auto;
-    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #eaeaea;
 }
 
 .user-record.not-active {
     opacity: 0.5;
 }
 
-.user-record img {
+.user-avatar {
+    min-width: 125px;
     display: block;
-    float: left;
     height: 125px;
     border-radius: 25px;
 }
 
 .user-record .user-name {
     display: block;
-    float: left;
     margin-top: 15px;
     margin-left: 25px;
     width: 175px;
@@ -604,13 +639,11 @@ input[type="text"]
 }
 
 .user-record .user-name p {
-    /*font-weight: bold;*/
     margin: 10px auto;
 }
 
 .user-record .user-email {
     display: block;
-    float: left;
     margin-top: 40px;
     margin-left: 25px;
     width: 175px;
@@ -618,7 +651,6 @@ input[type="text"]
 
 .user-record .user-age {
     display: block;
-    float: left;
     margin-top: 40px;
     margin-left: 25px;
     width: 45px;
@@ -626,7 +658,6 @@ input[type="text"]
 
 .user-record .user-role {
     display: block;
-    float: left;
     margin-top: 15px;
     margin-left: 25px;
     width: 125px;
@@ -634,7 +665,6 @@ input[type="text"]
 
 .user-record .user-lastlogin {
     display: block;
-    float: left;
     margin-top: 40px;
     margin-left: 25px;
     width: 175px;
@@ -642,31 +672,56 @@ input[type="text"]
 
 
 .admin-head {
-    margin-top: 10px;
+    margin-top:30px;
+    font-size: 28px;
     text-align: center;
     text-transform: uppercase;
 }
 
 .admin-menu {
-
-    left: 15px;
-    top: 20px;
-    height: 40px;
     width: 100%;
 }
 
 .admin-menu ul.menu{
     display: flex;
-    justify-content: space-between;
-    /*float: none;*/
-    width: 550px;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
     height: 50px;
-    margin: auto;
     color: #555;
 }
 
-.admin-menu ul.menu li
+.category-actions
 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.category-actions a
+{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.categories-list .category-name
+{
+    font-size: 18px;
+    text-align: left;
+    min-width: 200px;
+}
+
+.btn-subcats
+{
+    width: 7em;
     display: block;
-    margin: 30px 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+    text-decoration: none;
+    text-align: center;
+    color: #000000;
+    background-color: #C0C0C0;
+    border-radius: 15px;
 }

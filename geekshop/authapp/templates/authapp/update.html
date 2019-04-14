@@ -6,7 +6,7 @@
         {% csrf_token %}
         {{ form.as_p }}
         <br>
-        <input class="form-control" type="submit" value="сохранить">
+        <input class="btn form-control" type="submit" value="сохранить">
     </form>
     <a href="{% url 'main:index' %}" class="btn btn-register form-control">
         на главную
