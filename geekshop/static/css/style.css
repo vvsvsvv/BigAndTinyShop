@@ -569,7 +569,7 @@ input[type="text"]
     text-decoration: none;
 }
 
-.users-list, .categories-list
+.users-list, .categories-list, .myadmin-products-list
 {
     width: 960px;
     margin: 10px auto;
@@ -606,7 +606,7 @@ input[type="text"]
     padding: 0 15px;
 }
 
-.user-record, .category-record {
+.user-record, .category-record, .myadmin-product-record {
     height: 125px;
     margin: 15px auto;
     display: flex;
@@ -614,6 +614,10 @@ input[type="text"]
     align-items: center;
     flex-wrap: wrap;
     border-bottom: 1px solid #eaeaea;
+}
+
+.myadmin-product-record {
+    height: 175px;
 }
 
 .user-record.not-active {
@@ -724,4 +728,11 @@ input[type="text"]
     color: #000000;
     background-color: #C0C0C0;
     border-radius: 15px;
+}
+
+.myadmin-product-record img
+{
+    height: 150px;
+    min-width: 150px;
+    object-fit: cover;
 }
