@@ -606,7 +606,7 @@ input[type="text"]
     height: 175px;
 }
 
-.user-record.not-active {
+.not-active {
     opacity: 0.5;
 }
 
@@ -726,4 +726,15 @@ input[type="text"]
 .new-category-form {
     margin: 0 auto;
     width: 400px;
+}
+
+.form-control
+{
+    border: 2px solid #eaeaea;
+    border-radius: 5px;
+}
+
+.form-control:focus
+{
+    border: 2px solid #AFEEEE;
 }

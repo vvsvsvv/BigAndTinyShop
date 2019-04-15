@@ -26,7 +26,7 @@ def index(request):
 def categories(request):
     title = 'админка/категории'
 
-    object_list = ProductCategory.objects.all()
+    object_list = ProductCategory.objects.all().order_by('-is_active', 'name')
     context = {
         'title': title,
         'object_list': object_list
@@ -41,7 +41,7 @@ def subcategories(request, pk):
 
     title = f'админка/подкатегории ({category.name})'
 
-    object_list = category.productsubcategory_set.all().order_by('name')
+    object_list = category.productsubcategory_set.all().order_by('-is_active', 'name')
 
     context = {
         'title': title,
