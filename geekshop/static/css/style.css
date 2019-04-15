@@ -722,3 +722,8 @@ input[type="text"]
     min-width: 150px;
     object-fit: cover;
 }
+
+.new-category-form {
+    margin: 0 auto;
+    width: 400px;
+}

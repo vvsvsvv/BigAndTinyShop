@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import user_passes_test
 
 from authapp.models import ShopUser
 from mainapp.models import ProductCategory, ProductSubCategory
-from adminapp.forms import ShopUserUpdateAdminForm, ShopUserCreationAdminForm
+from adminapp.forms import ShopUserUpdateAdminForm, ShopUserCreationAdminForm, ProductCategoryEditForm
 
 
 @user_passes_test(lambda x: x.is_superuser)
@@ -127,3 +127,43 @@ def shopuser_delete(request, pk):
     }
 
     return render(request, 'adminapp/shopuser_delete.html', context)
+
+
+def productcategory_update(request, pk):
+    title = 'категории/редактирование'
+
+    current_object = get_object_or_404(ProductCategory, pk=pk)
+    if request.method == 'POST':
+        form = ProductCategoryEditForm(request.POST, request.FILES, instance=current_object)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('myadmin:categories'))
+    else:
+        form = ProductCategoryEditForm(instance=current_object)
+
+    context = {
+        'title': title,
+        'form': form
+    }
+
+    return render(request, 'adminapp/productcategory_update.html', context)
+
+
+def productsubcategory_update(request, pk):
+    title = 'категории/редактирование'
+
+    current_object = get_object_or_404(ProductSubCategory, pk=pk)
+    if request.method == 'POST':
+        form = ProductCategoryEditForm(request.POST, request.FILES, instance=current_object)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('myadmin:categories'))
+    else:
+        form = ProductCategoryEditForm(instance=current_object)
+
+    context = {
+        'title': title,
+        'form': form
+    }
+
+    return render(request, 'adminapp/productsubcategory_update.html', context)

@@ -8,7 +8,7 @@
         новая подкатегория
     </a>
     {% for object in object_list %}
-    <div class="category-record {% if not object.is_active %}not_active{% endif %}">
+    <div class="category-record {% if not object.is_active %}not-active{% endif %}">
         <div class="category-name">
             {{ object.name|title }}
         </div>
@@ -17,7 +17,7 @@
                class="btn-subcats">
                 товары
             </a>
-            <a href="{#% url 'myadmin:productsubategory_update' object.pk %#}"
+            <a href="{% url 'myadmin:productsubcategory_update' object.pk %}"
                class="btn-edit">
                 редактировать
             </a>
