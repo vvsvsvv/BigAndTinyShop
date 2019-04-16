@@ -11,9 +11,9 @@
             {{ form.as_p }}
             <input class="form-control" type="submit" value="сохранить">
         </form>
-        <a href="{% url 'myadmin:subcategories' category.pk %}"
-           class="btn-edit form-control">
-            к списку подкатегорий
+        <a href="{% url 'myadmin:products' category.pk subcategory.pk %}"
+           class="btn-edit">
+            к списку продуктов
         </a>
     </div>
 {% endblock %}

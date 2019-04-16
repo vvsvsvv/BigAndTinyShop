@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="categories-list">
-    <a href="{#% url 'myadmin:subcategory_create' %#}"
+    <a href="{% url 'myadmin:productsubcategory_create' category.pk%}"
        class="btn-new-user">
         новая подкатегория
     </a>
@@ -17,11 +17,11 @@
                class="btn-subcats">
                 товары
             </a>
-            <a href="{% url 'myadmin:productsubcategory_update' object.pk %}"
+            <a href="{% url 'myadmin:productsubcategory_update' object.category.pk object.pk %}"
                class="btn-edit">
                 редактировать
             </a>
-            <a href="{#% url 'myadmin:subcategory_delete' object.pk %#}"
+            <a href="{% url 'myadmin:productsubcategory_delete' object.pk %}"
                class="btn-delete">
                 удалить
             </a>

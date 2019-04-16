@@ -39,9 +39,8 @@ def get_basket(request):
         return []
 
 
-
 def index(request):
-    context={
+    context = {
         'page_title': 'Big and Tiny - Knitwear for big and tiny people',
         'basket': get_basket(request)
     }
@@ -53,22 +52,22 @@ def catalog(request, category_pk=0, subcategory_pk=0):
 
     # upload_db()
 
-    categories_and_subcategories = {category:None for category in ProductCategory.objects.all()}
+    categories_and_subcategories = {category:None for category in ProductCategory.objects.filter(is_active=True)}
 
     if int(category_pk) == 0:
-        products = Product.objects.all().order_by('price')
+        products = Product.objects.filter(is_active=True).order_by('price')
     else:
         category = get_object_or_404(ProductCategory, pk=category_pk)
-        subcategories = category.productsubcategory_set.all()
+        subcategories = category.productsubcategory_set.filter(is_active=True)
         categories_and_subcategories[category] = subcategories
 
         if int(subcategory_pk) == 0:
             products = []
             for subcategory in subcategories:
-                products.extend(subcategory.product_set.all())
+                products.extend(subcategory.product_set.filter(is_active=True))
         else:
             subcategory = get_object_or_404(ProductSubCategory, pk=subcategory_pk)
-            products = subcategory.product_set.order_by('price')
+            products = subcategory.product_set.filter(is_active=True).order_by('price')
 
     context={
         'page_title': 'каталог',

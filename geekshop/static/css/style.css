@@ -418,7 +418,7 @@ input[type="text"]
     align-items: flex-start;
 }
 
-.basket-record img
+.basket-record img, .product-read img
 {
     width: 150px;
     height: 150px;
@@ -723,7 +723,8 @@ input[type="text"]
     object-fit: cover;
 }
 
-.new-category-form {
+.new-category-form, .user_delete 
+{
     margin: 0 auto;
     width: 400px;
 }
@@ -737,4 +738,18 @@ input[type="text"]
 .form-control:focus
 {
     border: 2px solid #AFEEEE;
+}
+
+.product-read
+{
+    width: 900px;
+    margin: 0 auto;
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-read .product-name
+{
+    width: 20%;
 }
