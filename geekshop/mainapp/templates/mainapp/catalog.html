@@ -10,12 +10,12 @@
                 {% for category in categories.items %}
 
                     <div class="catalog-category">
-                        <a href="{% url 'main:catalog' category.0.id 0 %}" class="catalog-category-link">{{ category.0.name }}</a>
+                        <a href="{% url 'main:catalog' category.0.id 0 1 %}" class="catalog-category-link">{{ category.0.name }}</a>
                         <div class="catalog-subcategory-list">
                             {% for subcategory in category.1 %}
 
                                 <div class="catalog-subcategory">
-                                    <a href="{% url 'main:catalog' category.0.id subcategory.id %}"
+                                    <a href="{% url 'main:catalog' category.0.id subcategory.id 1 %}"
                                        class="catalog-subcategory-link
                                        {% if request.resolver_match.kwargs.subcategory_pk|add:'0' == subcategory.id %}
                                        active
@@ -30,6 +30,22 @@
 
             </div>
             <div class="catalog-items">
+
+                <div class="paginator">
+                    {% if products.has_previous %}
+                        <a href="{% url 'main:catalog' category_pk subcategory_pk products.previous_page_number %}">
+                        <
+                        </a>
+                    {% endif %}
+                    <span class="current">
+                        страница {{ products.number }} из {{ products.paginator.num_pages }}
+                    </span>
+                    {% if products.has_next %}
+                        <a href="{% url 'main:catalog' category_pk subcategory_pk products.next_page_number %}">
+                        >
+                        </a>
+                    {% endif %}
+                </div>
 
                 {% for product in products %}
 

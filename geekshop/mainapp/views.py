@@ -1,8 +1,12 @@
-from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
-from mainapp.models import ProductCategory, ProductSubCategory, Product
-from django.urls import reverse
-from basketapp.models import Basket
 import json
+
+from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
+from django.urls import reverse
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
+from mainapp.models import ProductCategory, ProductSubCategory, Product
+from basketapp.models import Basket
+
 
 def upload_db():
     # function for uploading db data to json
@@ -48,7 +52,7 @@ def index(request):
     return render(request, 'mainapp/index.html', context)
 
 
-def catalog(request, category_pk=0, subcategory_pk=0):
+def catalog(request, category_pk=0, subcategory_pk=0, page=1):
 
     # upload_db()
 
@@ -69,9 +73,20 @@ def catalog(request, category_pk=0, subcategory_pk=0):
             subcategory = get_object_or_404(ProductSubCategory, pk=subcategory_pk)
             products = subcategory.product_set.filter(is_active=True).order_by('price')
 
-    context={
+    paginator = Paginator(products, 3)
+
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        products = paginator.page(paginator(num_pages))
+
+    context = {
         'page_title': 'каталог',
         'categories': categories_and_subcategories,
+        'category_pk': category_pk,
+        'subcategory_pk': subcategory_pk,
         'products': products,
         'basket': get_basket(request)
 
