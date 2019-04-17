@@ -7,7 +7,7 @@
         <a href="{% url 'myadmin:shopuser_create' %}" class="btn-new-user">
             новый пользователь
         </a>
-        {% for object in objects %}
+        {% for object in object_list %}
             <div class="user-record {% if not object.is_active %}not-active{% endif %}">
                 <img class="user-avatar" src="/media/{{ object.avatar|default:'users_avatars/default.jpg' }}"
                      alt="{{ object.username }}">
