@@ -9,15 +9,7 @@ from django.http import JsonResponse
 
 @login_required
 def index(request):
-    title = 'корзина'
-    basket_items = request.user.basket.order_by('product__subcategory')
-
-    context = {
-        'title': title,
-        'basket_items': basket_items,
-    }
-
-    return render(request, 'basketapp/index.html', context)
+    return render(request, 'basketapp/index.html')
 
 
 @login_required
@@ -62,7 +54,7 @@ def update(request, pk, quantity):
             basket_item.delete()
 
         context = {
-            'basket_items': request.user.basket.all().order_by('product__subcategory'),
+            'basket': request.user.basket.all().order_by('product__subcategory'),
         }
 
         result = render_to_string('basketapp/includes/inc__basket_list.html', context)

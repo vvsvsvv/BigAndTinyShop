@@ -1,12 +1,9 @@
 import json
 
-from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
-from django.urls import reverse
+from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from mainapp.models import ProductCategory, ProductSubCategory, Product
-from basketapp.models import Basket
-
 
 def upload_db():
     # function for uploading db data to json
@@ -36,17 +33,10 @@ def upload_db():
         json.dump(product_list, products_json, default=float)
 
 
-def get_basket(request):
-    if request.user.is_authenticated:
-        return request.user.basket.all()
-    else:
-        return []
-
 
 def index(request):
     context = {
         'page_title': 'Big and Tiny - Knitwear for big and tiny people',
-        'basket': get_basket(request)
     }
 
     return render(request, 'mainapp/index.html', context)
@@ -88,8 +78,6 @@ def catalog(request, category_pk=0, subcategory_pk=0, page=1):
         'category_pk': category_pk,
         'subcategory_pk': subcategory_pk,
         'products': products,
-        'basket': get_basket(request)
-
     }
 
     return render(request, 'mainapp/catalog.html', context)
@@ -101,7 +89,6 @@ def product(request, pk):
     context = {
         'page_title': title,
         'object': get_object_or_404(Product, pk=pk),
-        'basket': get_basket(request),
     }
 
     return render(request, 'mainapp/product.html', context)
@@ -118,7 +105,6 @@ def contacts(request):
     context={
         'page_title': 'контакты',
         'locations': locations,
-        'basket': get_basket(request)
     }
 
 
