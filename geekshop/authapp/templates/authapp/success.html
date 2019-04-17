@@ -1,0 +1,11 @@
+{% extends 'authapp/base.html' %}
+{% load static %}
+
+
+{% block content %}
+    <h4>На Ваш emial отправлено письмо с ссылкой для верификации. Пройтите по ней для завершения регистрации</h4>
+    <br>
+    <a href="{% url 'main:index' %}" class="btn-edit form-control">
+        на главную
+    </a>
+{% endblock %}
