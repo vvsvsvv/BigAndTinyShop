@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.core.mail import send_mail
 from django.conf import settings
 
-from authapp.forms import ShopUserLoginForm, ShopUserRegisterForm, ShopUserEditForm
+from authapp.forms import ShopUserLoginForm, ShopUserRegisterForm, ShopUserEditForm, ShopUserProfileEditForm
 from authapp.models import ShopUser
 
 
@@ -72,15 +72,19 @@ def update(request):
 
     if request.method == 'POST':
         form = ShopUserEditForm(request.POST, request.FILES, instance=request.user)
-        if form.is_valid():
+        profile_form = ShopUserProfileEditForm(request.POST, request.FILES,
+                                               instance=request.user.shopuserprofile)
+        if form.is_valid() and profile_form.is_valid():
             form.save()
             return HttpResponseRedirect(reverse('auth:update'))
     else:
         form = ShopUserEditForm(instance=request.user)
+        profile_form = ShopUserProfileEditForm(instance=request.user.shopuserprofile)
 
     context = {
         'title': title,
-        'form': form
+        'form': form,
+        'profile_form': profile_form,
     }
 
     return render(request, 'authapp/update.html', context)
