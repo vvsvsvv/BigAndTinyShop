@@ -1,7 +1,11 @@
+from datetime import timedelta
+
 from django.db import models
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.contrib.auth.models import AbstractUser
 from django.utils.timezone import now
-from datetime import timedelta
+
 
 
 def activation_key_expires():
@@ -18,3 +22,16 @@ class ShopUser(AbstractUser):
         return now() <= self.activation_key_expires
 
 
+class ShopUserProfile(models.Model):
+    MALE = 'M'
+    FEMALE = 'F'
+
+    GENDER_CHOICES = (
+        (MALE, 'М'),
+        (FEMALE, 'Ж')
+    )
+
+    user = models.OneToOneField(ShopUser, on_delete=models.CASCADE)
+    tagline = models.CharField(verbose_name='теги', max_length=128, blank=True)
+    aboutMe = models.TextField(verbose_name='о себе', max_length=512, blank=True)
+    gender = models.CharField(verbose_name='пол', max_length=1, choices=GENDER_CHOICES, blank=True)
