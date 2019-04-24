@@ -16,3 +16,5 @@ class ShopUser(AbstractUser):
 
     def is_activation_key_valid(self):
         return now() <= self.activation_key_expires
+
+
