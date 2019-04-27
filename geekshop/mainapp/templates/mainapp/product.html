@@ -4,10 +4,12 @@
 {% block top %}
     <div class="top">
         {% include 'mainapp/includes/inc__main_menu.html' %}
-        <div class="product-info">
-            <img src="/media/{{ object.image }}" alt="{{ object.description }}" class="product-image product-page-image">
+        <div class="product-info row">
+            <div class="product-image col-md">
+                <img src="/media/{{ object.image }}" alt="{{ object.description }}" class="product-page-image">
+            </div>
 
-            <div class="product-description">
+            <div class="product-description col-md">
                 <div class="product-page-name">
                     {{ object.name|title }}
                 </div>
@@ -18,7 +20,7 @@
                 <div class="product-page-price">
                     Цена: {{ object.price }}&nbspруб
                 </div>
-                <a href="{% url 'basket:add' object.pk %}" class="button-buy">
+                <a href="{% url 'basket:add' object.pk %}" class="btn btn-outline-secondary">
                     Заказать
                 </a>
             </div>
