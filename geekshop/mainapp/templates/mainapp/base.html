@@ -21,12 +21,12 @@
     <div class="container-fluid main-container">
         {% block top %}
         {% endblock %}
-        <div class="footer">
+        <div class="main-footer">
             <div class="datetime">
                 {% now "Y/m/d H:i" %}
             </div>
-            <a href="#" class="about">обо мне</a>
-            <span class="copyright">&copy; Все права защищены</span>
+            <a href="#" class="about">о нас</a>
+            <a href="{% url 'main:contacts' %}" class="contacts">контакты</a>
         </div>
     </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
