@@ -3,19 +3,19 @@
 
 
 {% block content %}
-    <form class="form-horizontal" method="post">
+    <form method="post">
         {% csrf_token %}
         {% if next %}
-            <input type="hidden" name="next" value="{{ next }}">
+            <input class="form-control" type="hidden" name="next" value="{{ next }}">
         {% endif %}
         {{ form.as_p }}
         <br>
-        <input class="btn form-control" type="submit" value="войти">
+        <input class="btn btn-light form-control" type="submit" value="войти">
     </form>
-    <a href="{% url 'auth:register' %}" class="btn btn-register form-control">
+    <a href="{% url 'auth:register' %}" class="btn btn-light form-control">
         зарегистрироваться
     </a>
-    <a href="{% url 'social:begin' 'vk-oauth2' %}?next=/" class="btn btn-register form-control">
+    <a href="{% url 'social:begin' 'vk-oauth2' %}?next=/" class="btn btn-light form-control">
         Вход через ВК
     </a>
 
