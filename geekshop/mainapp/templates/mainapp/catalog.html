@@ -4,13 +4,17 @@
 {% block top %}
     <div class="top">
         {% include 'mainapp/includes/inc__main_menu.html' %}
-        <div class="catalog-content">
-            <div class="catalog-sidebar">
+        <div class="catalog-content row">
+            <div class="catalog-sidebar col-2">
 
                 {% for category in categories.items %}
 
                     <div class="catalog-category">
-                        <a href="{% url 'main:catalog' category.0.id 0 1 %}" class="catalog-category-link">{{ category.0.name }}</a>
+                        <a href="{% url 'main:catalog' category.0.id 0 1 %}"
+                           class="catalog-category-link
+                           {% if request.resolver_match.kwargs.category_pk|add:'0' == category.0.id %}
+                           active
+                           {% endif %}">{{ category.0.name }}</a>
                         <div class="catalog-subcategory-list">
                             {% for subcategory in category.1 %}
 
@@ -29,23 +33,7 @@
                 {% endfor %}
 
             </div>
-            <div class="catalog-items">
-
-                <div class="paginator">
-                    {% if products.has_previous %}
-                        <a href="{% url 'main:catalog' category_pk subcategory_pk products.previous_page_number %}">
-                        <
-                        </a>
-                    {% endif %}
-                    <span class="current">
-                        страница {{ products.number }} из {{ products.paginator.num_pages }}
-                    </span>
-                    {% if products.has_next %}
-                        <a href="{% url 'main:catalog' category_pk subcategory_pk products.next_page_number %}">
-                        >
-                        </a>
-                    {% endif %}
-                </div>
+            <div class="catalog-items col-10">
 
                 {% for product in products %}
 
@@ -59,5 +47,31 @@
                 {% endfor %}
             </div>
         </div>
+
+        <ul class="pagination justify-content-end">
+            {% if products.has_previous %}
+                <li class="page-item">
+                    <a class="page-link"
+                       href="{% url 'main:catalog' category_pk subcategory_pk products.previous_page_number %}">
+                    <
+                    </a>
+                </li>
+            {% endif %}
+            <li class="page-item disabled">
+                <a class="page-link" href="#">
+                    <span class="current">
+                        страница {{ products.number }} из {{ products.paginator.num_pages }}
+                    </span>
+                </a>
+            </li>
+            {% if products.has_next %}
+                <li class="page-item">
+                    <a class="page-link"
+                       href="{% url 'main:catalog' category_pk subcategory_pk products.next_page_number %}">
+                    >
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
     </div>
 {% endblock %}
