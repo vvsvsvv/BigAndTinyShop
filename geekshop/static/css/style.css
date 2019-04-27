@@ -9,11 +9,9 @@ body
     background-color: #ffffff;
 }
 
-.container
+.main-container
 {
-    max-width: 1366px;
     min-height: 100%;
-    margin: 0 auto;
     display: flex;
     flex-direction: column;
 }
@@ -32,11 +30,11 @@ body
     padding-right: 30px;
 }
 
-.header
+.main-header
 {
-    height: 250px;
     display: flex;
     justify-content: space-between;
+    padding-bottom: 30px;
     border-bottom: 1px solid lightgrey;
 }
 
@@ -47,31 +45,14 @@ body
     margin-left: 50px;
 }
 
-.menu
-{
-    margin-top: 50px;
-    margin-right: 50px;
-    list-style-type: none;
-    display: flex;
-    justify-content: space-between;
-
-}
-
 .menu-link
 {
-    color: #000000;
+    height: 50px;
     display: block;
-    margin: 30px 20px;
     font-size: 16px;
     text-decoration: none;
     text-transform: uppercase;
-}
-
-.active
-{
-    font-weight: bold;
-    color: #000000;
-    border-bottom: 2px solid #000000;
+    box-sizing: border-box;
 }
 
 .menu-link:hover
@@ -84,6 +65,35 @@ body
     text-transform: lowercase;
     font-weight: lighter;
 }
+
+.active
+{
+    /*font-weight: 600;*/
+    color: #000000;
+    border-bottom: 2px solid #000000;
+}
+
+
+
+
+
+
+/*.menu
+{
+    margin-top: 50px;
+    margin-right: 50px;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+
+}*/
+
+
+
+
+
+
+
 
 .catalog-sidebar
 {

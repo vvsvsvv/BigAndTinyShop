@@ -1,51 +1,55 @@
 {% load static %}
-<div class="header">
-    <a class="logo" href="{% url 'main:index' %}" title="На главную"><img src="{% static 'img/logo.png' %}" width="200" alt="logo"></a>
-    <ul class="menu">
-        <li class="menu-list">
-            <a href="{% url 'main:index' %}"
-            class="menu-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}">
-                Главная
+
+<nav class="navbar navbar-expand-lg navbar-light main-header">
+  <a class="navbar-brand" href="{% url 'main:index' %}"><img src="{% static 'img/logo.png' %}" width="200" alt="logo"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse flex-row-reverse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link menu-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}"
+           href="{% url 'main:index' %}">
+            Главная
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link menu-link {% if request.resolver_match.url_name == 'catalog' %}active{% endif %}"
+           href="{% url 'main:catalog' 0 0 1 %}">
+            Каталог
+        </a>
+      </li>
+      {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link menu-link"
+               href="{% url 'auth:update' %}">
+                {{ user.first_name|default:'Пользователь'|title }}
             </a>
-        </li>
-        <li class="menu-list">
-            <a href="{% url 'main:catalog' 0 0 1 %}"
-            class="menu-link {% if request.resolver_match.url_name == 'catalog' %}active{% endif %}">
-                Каталог
+          </li>
+      {% endif %}
+      {% if user.is_superuser %}
+          <li class="nav-item">
+            <a class="nav-link menu-link"
+               href="{% url 'myadmin:index' %}">
+                админка
             </a>
-        </li>
-        <li class="menu-list">
-            <a href="{% url 'main:contacts' %}"
-            class="menu-link {% if request.resolver_match.url_name == 'contacts' %}active{% endif %}">
-                Контакты
-            </a>
-        </li>
+          </li>
+      {% endif %}
+      <li class="nav-item">
         {% if user.is_authenticated %}
-            <li class="menu-list">
-                <a href="{% url 'auth:update' %}" class="menu-link">
-                    {{ user.first_name|default:'Пользователь'|title }}
-                </a>
-            </li>
+            <a class="nav-link menu-link"
+                href="{% url 'auth:logout' %}">
+                Выйти
+            </a>
+        {% else %}
+            <a href="{% url 'auth:login' %}" class="nav-link menu-link">
+                Войти
+            </a>
         {% endif %}
-        {% if user.is_superuser %}
-            <li class="menu-list">
-                <a href="{% url 'myadmin:index' %}" class="menu-link">
-                    админка
-                </a>
-            </li>
-        {% endif %}
-        <li class="menu-list">
-            {% if user.is_authenticated %}
-                <a href="{% url 'auth:logout' %}" class="menu-link">
-                    Выйти
-                </a>
-            {% else %}
-                <a href="{% url 'auth:login' %}" class="menu-link">
-                    Войти
-                </a>
-            {% endif %}
-        </li>
-        <a href="{% url 'basket:index' %}" class="menu-link basket-link">
+      </li>
+      <li class="nav-item">
+          <a href="{% url 'basket:index' %}" class="nav-link menu-link basket-link">
             <i class="fas fa-shopping-basket"></i>
             <span>
                 {% if basket %}
@@ -53,6 +57,8 @@
                     ({{ basket.0.total_quantity }}&nbsp;шт)
                 {% endif %}
             </span>
-        </a>
+          </a>
+      </li>
     </ul>
-</div>
+  </div>
+</nav>
