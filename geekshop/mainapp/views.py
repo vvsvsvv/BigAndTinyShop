@@ -63,7 +63,7 @@ def catalog(request, category_pk=0, subcategory_pk=0, page=1):
             subcategory = get_object_or_404(ProductSubCategory, pk=subcategory_pk)
             products = subcategory.product_set.filter(is_active=True).order_by('price')
 
-    paginator = Paginator(products, 3)
+    paginator = Paginator(products, 6)
 
     try:
         products = paginator.page(page)
