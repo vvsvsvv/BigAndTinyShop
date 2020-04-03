@@ -70,7 +70,7 @@ def catalog(request, category_pk=0, subcategory_pk=0, page=1):
     except PageNotAnInteger:
         products = paginator.page(1)
     except EmptyPage:
-        products = paginator.page(paginator(num_pages))
+        products = paginator.page(paginator.num_pages)
 
     context = {
         'page_title': 'каталог',
