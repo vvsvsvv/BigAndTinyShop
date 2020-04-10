@@ -22,10 +22,26 @@
       </li>
       {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link menu-link"
-               href="{% url 'auth:update' %}">
+            <div class="dropdown">
+              <a class="dropdown-toggle nav-link menu-link" href="" data-toggle="dropdown">
                 {{ user.first_name|default:'Пользователь'|title }}
-            </a>
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="nav-link menu-link"
+                    href="{% url 'auth:update' %}">
+                    профиль
+                  </a>
+                </li>
+                <li>
+                  <a class="nav-link menu-link"
+                    href="{#% url 'ordersapp:orders_list' %№#}">
+                    заказы
+                  </a>
+                </li>
+              </ul>
+            </div>
           </li>
       {% endif %}
       {% if user.is_superuser %}

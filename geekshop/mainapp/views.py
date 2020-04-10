@@ -102,7 +102,7 @@ def contacts(request):
         'address': 'Улица, дом'
     }
 
-    context={
+    context = {
         'page_title': 'контакты',
         'locations': locations,
     }
