@@ -303,6 +303,15 @@ body
     text-decoration: none;
 }
 
+.btn-inside-text {
+    color: white;
+}
+
+.btn-inside-text:hover {
+    color: white;
+    text-decoration: none;
+}
+
 
 
 
