@@ -2,7 +2,7 @@ from django import forms
 from ordersapp.models import Order, OrderItem
 
 
-class Orderform(forms.ModelForm):
+class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
         exclude = ('user',)
