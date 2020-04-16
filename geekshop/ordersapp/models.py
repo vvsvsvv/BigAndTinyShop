@@ -25,7 +25,7 @@ class Order(models.Model):
     created = models.DateTimeField(verbose_name='создан', auto_now_add=True)
     updated = models.DateTimeField(verbose_name='обновлен', auto_now=True)
     status = models.CharField(verbose_name='статус', max_length=3,
-                            choices=ORDER_STATUS_CHOICES, default=FORMING)
+                              choices=ORDER_STATUS_CHOICES, default=FORMING)
     is_active = models.BooleanField(verbose_name='активен', default=True)
 
 
@@ -62,5 +62,5 @@ class OrderItem(models.Model):
     product = models.ForeignKey(Product, verbose_name='продукт', on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(verbose_name='количество', default=0)
 
-    def get_product_cosT(self):
+    def get_product_cost(self):
         return self.product.price * self.quantity
