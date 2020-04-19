@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="user_delete">
+    <div class="user-delete">
         Уверены, что хотите удалить <b>{{ object.name }} - {{ object.category.name }}</b>?
         <form method="post">
             {% csrf_token %}

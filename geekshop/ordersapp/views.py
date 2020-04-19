@@ -4,6 +4,7 @@ from django.db import transaction
 
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.detail import DetailView
 from django.forms import inlineformset_factory
 
 from ordersapp.models import Order, OrderItem
@@ -100,3 +101,12 @@ class OrderUpdate(UpdateView):
 class OrderDelete(DeleteView):
     model = Order
     success_url = reverse_lazy('order:orders_list')
+
+
+class OrderRead(DetailView):
+    model = Order
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'заказ.просмотр'
+        return context

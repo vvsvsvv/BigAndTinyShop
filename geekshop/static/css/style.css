@@ -318,6 +318,11 @@ body
     padding: 10px;
 }
 
+.category-delete .btn {
+    display: block;
+    float: left;
+    margin: 25px;
+}
 
 
 
@@ -655,11 +660,12 @@ input[type="text"]
 .user-delete {
     margin: 50px auto;
     width: 600px;
-    font-size: 150%;
+    /* font-size: 150%; */
 }
 
 .user-delete .btn {
     display: block;
+    float: left;
     margin: 25px;
     width: 150px;
     color: #111;
@@ -838,7 +844,7 @@ input[type="text"]
     object-fit: cover;
 }
 
-.new-category-form, .user_delete 
+.new-category-form, .user-delete 
 {
     margin: 0 auto;
     width: 400px;

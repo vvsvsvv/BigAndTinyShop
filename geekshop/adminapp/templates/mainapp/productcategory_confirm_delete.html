@@ -5,14 +5,16 @@
 {% endblock %}
 
 {% block content %}
-    <div class="user_delete">
+    <div class="category-delete">
         Уверены, что хотите удалить <b>{{ object.name }}</b>?
-        <form method="post">
-            {% csrf_token %}
-            <input class="btn-delete" type="submit" value="удалить">
-        </form>
-        <a href="{% url 'myadmin:categories' %}" class="btn-edit">
-            отмена
-        </a>
+        <div class="confirm-buttons">
+            <form method="post">
+                {% csrf_token %}
+                <input class="btn btn-delete" type="submit" value="удалить">
+            </form>
+            <a href="{% url 'myadmin:categories' %}" class="btn btn-edit">
+                отмена
+            </a>
+        </div>
     </div>
 {% endblock %}

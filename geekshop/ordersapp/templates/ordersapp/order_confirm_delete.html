@@ -2,15 +2,17 @@
 {% load staticfiles %}
 
 {% block content %}
-   <div class="category_delete">
+   <div class="category-delete">
        <div class="h1">Уверены, что хотите удалить?</div>
        {% include 'ordersapp/includes/inc__order_summary.html' %}
-       <form method="post">
-           {% csrf_token %}
-           <input class="btn btn-danger" type="submit" value="удалить">
-       </form>
-       <button class="btn btn-success">
-           <a href="{% url 'order:orders_list' %}" class='btn-inside-text'>отмена</a>
-       </button>
+       <div class="order-delete-action-buttons">
+            <form method="post">
+                {% csrf_token %}
+                <input class="btn btn-danger" type="submit" value="удалить">
+            </form>
+            <button class="btn btn-success">
+                <a href="{% url 'order:orders_list' %}" class='btn-inside-text'>отмена</a>
+            </button>
+       </div>
    </div>
 {% endblock %}
