@@ -1,6 +1,8 @@
 from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.db import transaction
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponseRedirect
 
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -110,3 +112,11 @@ class OrderRead(DetailView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'заказ.просмотр'
         return context
+
+
+def order_forming_complete(request, pk):
+    order = get_object_or_404(Order, pk=pk)
+    order.status = Order.SEND_TO_PROCEED
+    order.save()
+
+    return HttpResponseRedirect(reverse('order:orders_list'))
