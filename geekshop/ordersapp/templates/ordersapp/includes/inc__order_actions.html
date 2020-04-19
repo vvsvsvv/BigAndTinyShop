@@ -2,7 +2,7 @@
     <a href="{#% url 'order:order_forming_complete' object.pk %#}" class="btn btn-warning form-control last">
         совершить покупку
     </a>
-    <a href="{% url 'order:order_delete' object.pk %}" class="btn btn-default form-control last">
+    <a href="{#% url 'order:order_delete' object.pk %#}" class="btn btn-default form-control last">
         удалить
     </a>
 {% endif %}

@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.db import transaction
 
 from django.views.generic import ListView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.forms import inlineformset_factory
 
 from ordersapp.models import Order, OrderItem
@@ -56,6 +56,40 @@ class OrderCreate(CreateView):
                 orderitems.instance = self.object
                 orderitems.save()
             self.request.user.basket.all().delete()
+        # delete empty order
+        if self.object.get_total_cost() == 0:
+            self.object.delete()
+
+        return super().form_valid(form)
+
+
+class OrderUpdate(UpdateView):
+    model = Order
+    fields = []
+    # form_class = OrderForm
+    success_url = reverse_lazy('order:orders_list')
+
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        OrderFormSet = inlineformset_factory(Order, OrderItem, form=OrderItemForm, extra=1)
+
+        if self.request.POST:
+            data['orderitems'] = OrderFormSet(self.request.POST, self.request.FILES, instance=self.object)
+        else:
+            data['orderitems'] = OrderFormSet(instance=self.object)
+
+        return data
+
+    def form_valid(self, form):
+        context = self.get_context_data()
+        orderitems = context['orderitems']
+
+        with transaction.atomic():
+            self.object = form.save()
+            if orderitems.is_valid():
+                orderitems.instance = self.object
+                orderitems.save()
+
         # delete empty order
         if self.object.get_total_cost() == 0:
             self.object.delete()
