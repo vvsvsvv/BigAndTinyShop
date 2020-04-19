@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
+from django.db import transaction
 
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView
@@ -43,3 +44,20 @@ class OrderCreate(CreateView):
 
         data['orderitems'] = formset
         return data
+
+    def form_valid(self, form):
+        context = self.get_context_data()
+        orderitems = context['orderitems']
+
+        with transaction.atomic():
+            form.instance.user = self.request.user
+            self.object = form.save()
+            if orderitems.is_valid():
+                orderitems.instance = self.object
+                orderitems.save()
+            self.request.user.basket.all().delete()
+        # delete empty order
+        if self.object.get_total_cost() == 0:
+            self.object.delete()
+
+        return super().form_valid(form)
