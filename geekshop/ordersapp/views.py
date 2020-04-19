@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 from django.db import transaction
 
 from django.views.generic import ListView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.forms import inlineformset_factory
 
 from ordersapp.models import Order, OrderItem
@@ -95,3 +95,8 @@ class OrderUpdate(UpdateView):
             self.object.delete()
 
         return super().form_valid(form)
+
+
+class OrderDelete(DeleteView):
+    model = Order
+    success_url = reverse_lazy('order:orders_list')
