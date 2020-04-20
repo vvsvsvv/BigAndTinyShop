@@ -29,7 +29,6 @@ def add(request, pk):
         basket = Basket(user=request.user, product=product)
 
     basket.quantity += 1
-    # TODO уменьшать количество товаров в базе
     basket.save()
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
