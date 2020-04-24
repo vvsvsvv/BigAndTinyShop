@@ -13,7 +13,7 @@ function orderSummaryUpdate(orderitemPrice, deltaQuantity) {
  
     $('.order_total_cost').html(orderTotalCost.toString());
     $('.order_total_quantity').html(orderTotalQuantity.toString());
- }
+}
 
 window.onload = function () {
     orderForm = $('.order_form')
